@@ -159,7 +159,7 @@ body {
   color: #555;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1em;
-  line-height: 1.9;
+  line-height: 2;
 }
 @media (max-width: 991px) {
   body {
@@ -179,22 +179,22 @@ h6 {
   margin: 20px 0 15px;
 }
 h1 {
-  font-size: 1.51em;
+  font-size: 1.5em;
 }
 h2 {
-  font-size: 1.38em;
+  font-size: 1.375em;
 }
 h3 {
   font-size: 1.25em;
 }
 h4 {
-  font-size: 1.12em;
+  font-size: 1.125em;
 }
 h5 {
-  font-size: 0.99em;
+  font-size: 1em;
 }
 h6 {
-  font-size: 0.86em;
+  font-size: 0.875em;
 }
 p {
   margin: 0 0 20px 0;
@@ -367,7 +367,7 @@ td {
 pre {
   background: #f7f7f7;
   color: #4d4d4c;
-  line-height: 1.4;
+  line-height: 1.6;
   margin: 0 auto 20px;
 }
 pre,
@@ -1163,7 +1163,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b4badd;
+  background: #ffe7db;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
