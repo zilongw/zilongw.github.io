@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SLAM初探一：Linux安装OpenCV4</title>
+    <url>/2020/02/17/SLAM%E5%88%9D%E6%8E%A2%E4%B8%80%EF%BC%9ALinux%E5%AE%89%E8%A3%85OpenCV4/</url>
+    <content><![CDATA[<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>必须要安装的依赖，通过命令安装：</p>
+<figure class="highlight q"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install build-essential cmake git libgtk2<span class="number">.0</span>-<span class="built_in">dev</span> pkg-config libavcodec-<span class="built_in">dev</span> libavformat-<span class="built_in">dev</span> libswscale-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight q"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install python-<span class="built_in">dev</span> python-numpy python3-<span class="built_in">dev</span> python3-numpy</span><br><span class="line">sudo apt-<span class="built_in">get</span> install libtbb2 libtbb-<span class="built_in">dev</span> libjpeg-<span class="built_in">dev</span> libpng-<span class="built_in">dev</span> libtiff-<span class="built_in">dev</span> libjasper-<span class="built_in">dev</span> libdc1394<span class="number">-22</span>-<span class="built_in">dev</span>   <span class="comment">//可选择安装，具体参考OpenCV官方说明，这个可能会变！</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装OpenCV4"><a href="#安装OpenCV4" class="headerlink" title="安装OpenCV4"></a>安装OpenCV4</h2><p>下载OpenCV4的源码安装包，可在OpenCV官方GitHub上面找到，然后解压，新建build文件夹，进入文件夹：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">cmake <span class="attribute">-DCMAKE_BUILD_TYPE</span>=Release \</span><br><span class="line"><span class="attribute">-DOPENCV_GENERATE_PKGCONFIG</span>=ON \</span><br><span class="line"><span class="attribute">-DCMAKE_INSTALL_PREFIX</span>=/usr/local <span class="built_in">..</span></span><br></pre></td></tr></table></figure>
+
+<p>OpenCV4默认不生成.pc文件，<strong>OPENCV_GENERATE_PKGCONFIG=ON</strong>才会生成。<br> 然后就是安装：</p>
+<figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">make</span> -j8</span><br><span class="line">sudo <span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
+
+<p>之后就是配置c++了,先在/etc/ld.so.conf.d/文件夹下新建一个opencv4.conf，里面写入/usr/local/lib。</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> /etc/ld.<span class="keyword">so</span>.<span class="keyword">conf</span>.<span class="keyword">d</span>/</span><br><span class="line">sudo touch opencv4.<span class="keyword">conf</span></span><br><span class="line">sudo <span class="keyword">sh</span> -c 'echo <span class="string">"/usr/local/lib"</span> &gt; opencv4.<span class="keyword">conf</span>'</span><br></pre></td></tr></table></figure>
+
+<p>更新pkg-config：</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo ldconfig</span></span><br></pre></td></tr></table></figure>
+
+<p>之后可以在终端输入<strong>pkg-config –libs opencv4</strong>和<strong>pkg-config –cflags opencv4</strong>检验一下是否安装成功。</p>
+<h2 id="OpenCV的卸载"><a href="#OpenCV的卸载" class="headerlink" title="OpenCV的卸载"></a>OpenCV的卸载</h2><p>删掉opencv4.conf文件，然后在源码包下的build文件夹下运行<strong>sudo make uinstall</strong>即可。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>自我介绍</title>
     <url>/2020/02/17/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<p>本人名叫王子龙，目前在读大二，非计算机科班出身，学的是机械类专业，开通个人博客的原因是记录学习SLAM的过程，我于2019.10.23创建了一个公众号：SLAM这件小事，到现在已经100天多天了，我的“SLAM初探系列笔记”目前也更新到了SLAM初探六十八，感觉收获满满，但是还只是入门，并没有学到啥，毕竟这个SLAM需要深厚的数学知识和C++编程能力，很劝退人啊！但是对于这种技术的热爱还是很高涨，也一直慢慢坚持到现在，鉴于公众号的一些不方便性，我在这里开通个人博客，也同步更新一些学习SLAM过程中的笔记和总结，慢慢总结才能学好SLAM，同时欢迎大家关注！</p>
