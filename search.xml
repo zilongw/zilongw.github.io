@@ -8,6 +8,8 @@
 
 <figure class="highlight q"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install python-<span class="built_in">dev</span> python-numpy python3-<span class="built_in">dev</span> python3-numpy</span><br><span class="line">sudo apt-<span class="built_in">get</span> install libtbb2 libtbb-<span class="built_in">dev</span> libjpeg-<span class="built_in">dev</span> libpng-<span class="built_in">dev</span> libtiff-<span class="built_in">dev</span> libjasper-<span class="built_in">dev</span> libdc1394<span class="number">-22</span>-<span class="built_in">dev</span>   <span class="comment">//可选择安装，具体参考OpenCV官方说明，这个可能会变！</span></span><br></pre></td></tr></table></figure>
 
+<a id="more"></a> 
+
 <h2 id="安装OpenCV4"><a href="#安装OpenCV4" class="headerlink" title="安装OpenCV4"></a>安装OpenCV4</h2><p>下载OpenCV4的源码安装包，可在OpenCV官方GitHub上面找到，然后解压，新建build文件夹，进入文件夹：</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">cmake <span class="attribute">-DCMAKE_BUILD_TYPE</span>=Release \</span><br><span class="line"><span class="attribute">-DOPENCV_GENERATE_PKGCONFIG</span>=ON \</span><br><span class="line"><span class="attribute">-DCMAKE_INSTALL_PREFIX</span>=/usr/local <span class="built_in">..</span></span><br></pre></td></tr></table></figure>
 
