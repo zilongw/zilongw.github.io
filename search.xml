@@ -7,8 +7,8 @@
 <a id="more"></a> 
 
 <p>这个相机大概就是这样</p>
-<p><img src="/http://yoursite.com//1.jpg" alt="1"></p>
-<p><img src="/http://yoursite.com//2.jpg" alt="2"></p>
+<p>_posts/Pro/1.jpg</p>
+<p><img src="/http://yoursite.com//1.jpg" alt></p>
 <p>第一幅图是官方图，第二幅图是在寝室拍的”美照”</p>
 <p>它支持支持Windows，Android,linux,以及Unity,具体驱动可以访问官方网站: <a href="https://orbbec3d.com/download-sdk/">https://orbbec3d.com/download-sdk/</a></p>
 <h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">sudo apt install ros-$ROS_DISTRO-rgbd-<span class="keyword">launch</span> ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-<span class="keyword">camera</span> ros-$ROS_DISTRO-libuvc-ros</span><br></pre></td></tr></table></figure>
