@@ -25,6 +25,9 @@
 <p>之后可以在终端输入<strong>pkg-config –libs opencv4</strong>和<strong>pkg-config –cflags opencv4</strong>检验一下是否安装成功。</p>
 <h2 id="OpenCV的卸载"><a href="#OpenCV的卸载" class="headerlink" title="OpenCV的卸载"></a>OpenCV的卸载</h2><p>删掉opencv4.conf文件，然后在源码包下的build文件夹下运行<strong>sudo make uinstall</strong>即可。</p>
 ]]></content>
+      <categories>
+        <category>SLAM</category>
+      </categories>
       <tags>
         <tag>SLAM初探</tag>
       </tags>
