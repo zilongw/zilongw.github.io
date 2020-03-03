@@ -27,19 +27,18 @@
 <meta property="og:site_name" content="SLAM这件小事">
 <meta property="og:description" content="我最近购买了Astra pro的深度相机，价格地道，就125人民币，另外购买了一个双目摄像头，就30人民币，不过就这样开启了我的学习之路，开心，在下午去学校拿到快递以后异常开心，回到寝室也没干别的事情，一直在测试相机，等把这篇文章发出去还要好好吃顿饭，哈哈哈……..">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/Pro/Pro/image-20200303174745939.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/Pro/Pro/image-20200303174809416.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/Pro/Pro/image-20200303175347617.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/Pro/Pro/image-20200303175601966.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/Pro/Pro/image-20200303175613612.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/Pro/Pro/image-20200303175736765.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/Pro/Pro/image-20200303175800234.png">
+<meta property="og:image" content="http://yoursite.com/http://yoursite.com//1.jpg">
+<meta property="og:image" content="http://yoursite.com/http://yoursite.com//2.jpg">
+<meta property="og:image" content="http://yoursite.com/http://yoursite.com//4.jpg">
+<meta property="og:image" content="http://yoursite.com/http://yoursite.com//3.jpg">
+<meta property="og:image" content="http://yoursite.com/http://yoursite.com//5.jpg">
+<meta property="og:image" content="http://yoursite.com/http://yoursite.com//6.jpg">
 <meta property="article:published_time" content="2020-03-03T09:42:29.000Z">
-<meta property="article:modified_time" content="2020-03-03T09:58:40.644Z">
+<meta property="article:modified_time" content="2020-03-03T10:23:46.540Z">
 <meta property="article:author" content="王子龙">
 <meta property="article:tag" content="开发使用">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/03/Pro/Pro/image-20200303174745939.png">
+<meta name="twitter:image" content="http://yoursite.com/http://yoursite.com//1.jpg">
 
 <link rel="canonical" href="http://yoursite.com/2020/03/03/Pro/">
 
@@ -251,8 +250,8 @@
 <a id="more"></a> 
 
 <p>这个相机大概就是这样</p>
-<p><img src="Pro/image-20200303174745939.png" alt="image-20200303174745939"></p>
-<p><img src="Pro/image-20200303174809416.png" alt="image-20200303174809416"></p>
+<p><img src="/http://yoursite.com//1.jpg" alt></p>
+<p><img src="/http://yoursite.com//2.jpg" alt></p>
 <p>第一幅图是官方图，第二幅图是在寝室拍的”美照”</p>
 <p>它支持支持Windows，Android,linux,以及Unity,具体驱动可以访问官方网站: <a href="https://orbbec3d.com/download-sdk/">https://orbbec3d.com/download-sdk/</a></p>
 <h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ros-$ROS_DISTRO-rgbd-<span class="keyword">launch</span> ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-<span class="keyword">camera</span> ros-$ROS_DISTRO-libuvc-ros</span><br></pre></td></tr></table></figure>
@@ -275,7 +274,6 @@
 <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">roslaunch astra_camera astra.<span class="keyword">launch</span></span><br><span class="line">rviz  <span class="comment">//启动rviz</span></span><br></pre></td></tr></table></figure>
 
 <p>在rviz启动以后，点击下方“Add”,把image选项添加进去，在 image topic里面选择合适的话题，例如本人电脑是image raw,这样就会显示彩色图像了。</p>
-<p><img src="Pro/image-20200303175347617.png" alt="image-20200303175347617"></p>
 <p>如果深度摄像头不显示RGB图像怎么办？不怕，还有解决办法滴！</p>
 <h2 id="插入相机查看设备向量ID"><a href="#插入相机查看设备向量ID" class="headerlink" title="插入相机查看设备向量ID"></a>插入相机查看设备向量ID</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lsusb</span></span><br></pre></td></tr></table></figure>
 
@@ -286,8 +284,8 @@
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"product"</span> <span class="attribute">value</span>=<span class="string">"0x0502"</span>/&gt;</span><br></pre></td></tr></table></figure>
 
 <p>这样再次启动launch文件并重复上面操作就能显示彩色图像了。</p>
-<p><img src="Pro/image-20200303175601966.png" alt="image-20200303175601966"></p>
-<p><img src="Pro/image-20200303175613612.png" alt="image-20200303175613612"></p>
+<p><img src="/http://yoursite.com//4.jpg" alt></p>
+<p><img src="/http://yoursite.com//3.jpg" alt></p>
 <h2 id="OpenNI安装"><a href="#OpenNI安装" class="headerlink" title="OpenNI安装"></a>OpenNI安装</h2><p>去官网下载文件即可，我在Ubuntu18.04上面测试功能。下载好以后有一堆文件夹，有Android、Windows、Linux x64、Linux Arm等，根据本人电脑情况，我保留Linux x64。</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//进入目录以后在终端打开</span><br><span class="line"><span class="keyword">export</span> ASTRA_SDK_INCLUDE=~/Astra/<span class="keyword">install</span>/<span class="keyword">include</span></span><br><span class="line"><span class="keyword">export</span> ASTRA_SDK_LIB=~/Astra/<span class="keyword">install</span>/lib</span><br><span class="line">source ~/.bashrc</span><br><span class="line">sudo chmod a+x <span class="keyword">install</span>.sh</span><br><span class="line">sudo ./<span class="keyword">install</span>.sh</span><br></pre></td></tr></table></figure>
 
@@ -295,9 +293,9 @@
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">source</span> <span class="string">OpenNIDevEnvironment</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">Samples/SimpleViewer</span></span><br><span class="line"><span class="attr">make</span>  <span class="string"></span></span><br><span class="line"> <span class="attr">cd</span> <span class="string">Bin</span></span><br><span class="line"><span class="attr">./SimpleViewer</span></span><br></pre></td></tr></table></figure>
 
 <p>然后就出现下面图片</p>
-<p><img src="Pro/image-20200303175736765.png" alt="image-20200303175736765"></p>
+<p><img src="/http://yoursite.com//5.jpg" alt></p>
 <p>在Bin目录下还有其他可以测试一下</p>
-<p><img src="Pro/image-20200303175800234.png" alt="image-20200303175800234"></p>
+<p><img src="/http://yoursite.com//6.jpg" alt></p>
 <p>总的来说，性价比还不错，我彻底入坑了。这个世界上其实并没有所谓的最正确的选择，而我们也只有更加努力奋斗才能使当初的选择变得正确。</p>
 
     </div>
