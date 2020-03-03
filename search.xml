@@ -7,8 +7,8 @@
 <a id="more"></a> 
 
 <p>这个相机大概就是这样</p>
-<p>_posts/Pro/1.jpg</p>
-<p><img src="/http://yoursite.com//1.jpg" alt></p>
+<p><img src="/http://yoursite.com//H751cf17735b94dbb86e22e898a3194cdC.jpg" alt></p>
+<p><img src="/http://yoursite.com//H5d7a3f78a22343ba8aa6d18efdb4211fn.jpg" alt></p>
 <p>第一幅图是官方图，第二幅图是在寝室拍的”美照”</p>
 <p>它支持支持Windows，Android,linux,以及Unity,具体驱动可以访问官方网站: <a href="https://orbbec3d.com/download-sdk/">https://orbbec3d.com/download-sdk/</a></p>
 <h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">sudo apt install ros-$ROS_DISTRO-rgbd-<span class="keyword">launch</span> ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-<span class="keyword">camera</span> ros-$ROS_DISTRO-libuvc-ros</span><br></pre></td></tr></table></figure>
@@ -41,8 +41,7 @@
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"product"</span> <span class="attribute">value</span>=<span class="string">"0x0502"</span>/&gt;</span><br></pre></td></tr></table></figure>
 
 <p>这样再次启动launch文件并重复上面操作就能显示彩色图像了。</p>
-<p><img src="/http://yoursite.com//4.jpg" alt="4"></p>
-<p><img src="/http://yoursite.com//3.jpg" alt></p>
+<p><img src="/http://yoursite.com//H32b28200094a41b999376d4604485b1bv.jpg" alt></p>
 <h2 id="OpenNI安装"><a href="#OpenNI安装" class="headerlink" title="OpenNI安装"></a>OpenNI安装</h2><p>去官网下载文件即可，我在Ubuntu18.04上面测试功能。下载好以后有一堆文件夹，有Android、Windows、Linux x64、Linux Arm等，根据本人电脑情况，我保留Linux x64。</p>
 <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">//进入目录以后在终端打开</span><br><span class="line"><span class="keyword">export</span> ASTRA_SDK_INCLUDE=~/Astra/<span class="keyword">install</span>/<span class="keyword">include</span></span><br><span class="line"><span class="keyword">export</span> ASTRA_SDK_LIB=~/Astra/<span class="keyword">install</span>/lib</span><br><span class="line">source ~/.bashrc</span><br><span class="line">sudo chmod a+x <span class="keyword">install</span>.sh</span><br><span class="line">sudo ./<span class="keyword">install</span>.sh</span><br></pre></td></tr></table></figure>
 
@@ -50,9 +49,9 @@
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">source</span> <span class="string">OpenNIDevEnvironment</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">Samples/SimpleViewer</span></span><br><span class="line"><span class="attr">make</span>  <span class="string"></span></span><br><span class="line"> <span class="attr">cd</span> <span class="string">Bin</span></span><br><span class="line"><span class="attr">./SimpleViewer</span></span><br></pre></td></tr></table></figure>
 
 <p>然后就出现下面图片</p>
-<p><img src="/http://yoursite.com//5.jpg" alt="5"></p>
+<p><img src="/http://yoursite.com//Hbac7e928520c4d729dfdd0816f2c13d4Q.jpg" alt></p>
 <p>在Bin目录下还有其他可以测试一下</p>
-<p><img src="/http://yoursite.com//6.jpg" alt="6"></p>
+<p><img src="/http://yoursite.com//Hfcfcb121eba349b78bc34ad98135212dX.jpg" alt></p>
 <p>总的来说，性价比还不错，我彻底入坑了。这个世界上其实并没有所谓的最正确的选择，而我们也只有更加努力奋斗才能使当初的选择变得正确。</p>
 ]]></content>
       <categories>
