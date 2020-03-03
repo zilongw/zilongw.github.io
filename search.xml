@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SLAM初探二：初探Astra Pro</title>
+    <url>/2020/03/03/Pro/</url>
+    <content><![CDATA[<p>我最近购买了Astra pro的深度相机，价格地道，就125人民币，另外购买了一个双目摄像头，就30人民币，不过就这样开启了我的学习之路，开心，在下午去学校拿到快递以后异常开心，回到寝室也没干别的事情，一直在测试相机，等把这篇文章发出去还要好好吃顿饭，哈哈哈……..</p>
+<a id="more"></a> 
+
+<p>这个相机大概就是这样</p>
+<p><img src="Pro/image-20200303174745939.png" alt="image-20200303174745939"></p>
+<p><img src="Pro/image-20200303174809416.png" alt="image-20200303174809416"></p>
+<p>第一幅图是官方图，第二幅图是在寝室拍的”美照”</p>
+<p>它支持支持Windows，Android,linux,以及Unity,具体驱动可以访问官方网站: <a href="https://orbbec3d.com/download-sdk/">https://orbbec3d.com/download-sdk/</a></p>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">sudo apt install ros-$ROS_DISTRO-rgbd-<span class="keyword">launch</span> ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-<span class="keyword">camera</span> ros-$ROS_DISTRO-libuvc-ros</span><br></pre></td></tr></table></figure>
+
+<p><code>ROS_DISTRO</code>为Ubuntu所安装的ROS系统，替换即可</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> ros-melodic-uvc-camera</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> <span class="keyword">build</span>-essential freeglut3 freeglut3-dev</span><br></pre></td></tr></table></figure>
+
+<p>源码编译(ROS包)</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">cd</span> ~<span class="string">/catkin_ws/src</span></span><br><span class="line">git clone https:<span class="string">//github.com/orbbec/ros_astra_camera</span></span><br><span class="line"></span><br><span class="line">roscd astra_camera</span><br><span class="line">sudo sh <span class="string">./scripts/create_udev_rules</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> ~<span class="string">/catkin_ws</span></span><br><span class="line">catkin_make <span class="params">--pkg</span> astra_camera</span><br></pre></td></tr></table></figure>
+
+<p>这样基本完成了一大部分工作</p>
+<p>但是在测试过程中有点小问题，需要解决，得出解决方案如下;</p>
+<h2 id="修改astra-launch的代码"><a href="#修改astra-launch的代码" class="headerlink" title="修改astra.launch的代码"></a>修改astra.launch的代码</h2><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo gedit astra.launch  <span class="regexp">//</span>需要先转到catkin_ws<span class="regexp">/src/</span>ros_astra_camera<span class="regexp">/launch</span></span><br></pre></td></tr></table></figure>
+
+<p>翻到代码最后面，复制以下代码到“&lt; /launch &gt;”的前面。</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;node <span class="attribute">pkg</span>=<span class="string">"uvc_camera"</span> <span class="attribute">type</span>=<span class="string">"uvc_camera_node"</span> <span class="attribute">name</span>=<span class="string">"uvc_camera"</span> <span class="attribute">output</span>=<span class="string">"screen"</span>   /&gt;</span><br><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"width"</span> <span class="attribute">type</span>=<span class="string">"int"</span> <span class="attribute">value</span>=<span class="string">"320"</span> /&gt;</span><br><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"height"</span> <span class="attribute">type</span>=<span class="string">"int"</span> <span class="attribute">value</span>=<span class="string">"240"</span> /&gt;</span><br><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"fps"</span> <span class="attribute">type</span>=<span class="string">"int"</span> <span class="attribute">value</span>=<span class="string">"30"</span> /&gt;</span><br><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"frame"</span> <span class="attribute">type</span>=<span class="string">"string"</span> <span class="attribute">value</span>=<span class="string">"wide_stereo"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"auto_focus"</span> <span class="attribute">type</span>=<span class="string">"bool"</span> <span class="attribute">value</span>=<span class="string">"False"</span> /&gt;</span><br><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"focus_absolute"</span> <span class="attribute">type</span>=<span class="string">"int"</span> <span class="attribute">value</span>=<span class="string">"0"</span> /&gt;</span><br><span class="line">&lt;!-- other supported params: auto_exposure, exposure_absolute, brightness, power_line_frequency --&gt;</span><br><span class="line"></span><br><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"device"</span> <span class="attribute">type</span>=<span class="string">"string"</span> <span class="attribute">value</span>=<span class="string">"/dev/video2"</span> /&gt; </span><br><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"camera_info_url"</span> <span class="attribute">type</span>=<span class="string">"string"</span> <span class="attribute">value</span>=<span class="string">"file://<span class="variable">$(find uvc_camera)</span>/example.yaml"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="相机测试"><a href="#相机测试" class="headerlink" title="相机测试"></a>相机测试</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">source</span> ~<span class="regexp">/catkin_ws/</span>devel<span class="regexp">/setup.bash /</span><span class="regexp">/建议在bashrc中提前写入，这样就不需要每次source一次</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">roslaunch astra_camera astra.<span class="keyword">launch</span></span><br><span class="line">rviz  <span class="comment">//启动rviz</span></span><br></pre></td></tr></table></figure>
+
+<p>在rviz启动以后，点击下方“Add”,把image选项添加进去，在 image topic里面选择合适的话题，例如本人电脑是image raw,这样就会显示彩色图像了。</p>
+<p><img src="Pro/image-20200303175347617.png" alt="image-20200303175347617"></p>
+<p>如果深度摄像头不显示RGB图像怎么办？不怕，还有解决办法滴！</p>
+<h2 id="插入相机查看设备向量ID"><a href="#插入相机查看设备向量ID" class="headerlink" title="插入相机查看设备向量ID"></a>插入相机查看设备向量ID</h2><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">lsusb</span></span><br></pre></td></tr></table></figure>
+
+<p>然后每个人都会显示一堆device，通过观察分享可知道，其中2bc5:0403是深度模块, 2bc5:0502是RGB模块。(不出意外应该每个人都是这样的)，然后进入/catkin_ws/src/ros_astra_camera/launch目录下查看astrapro.launch。我们会发现在大概68行左右，有以下代码（也可以直接Ctrl+F全局搜索0x05，就这一处地方有0x05）</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"product"</span> <span class="attribute">value</span>=<span class="string">"0x0501"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由于上面device里面有0x0502,这也是我设备，并不是0x0501,所以直接把0x0501改成0x0502</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;param <span class="attribute">name</span>=<span class="string">"product"</span> <span class="attribute">value</span>=<span class="string">"0x0502"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这样再次启动launch文件并重复上面操作就能显示彩色图像了。</p>
+<p><img src="Pro/image-20200303175601966.png" alt="image-20200303175601966"></p>
+<p><img src="Pro/image-20200303175613612.png" alt="image-20200303175613612"></p>
+<h2 id="OpenNI安装"><a href="#OpenNI安装" class="headerlink" title="OpenNI安装"></a>OpenNI安装</h2><p>去官网下载文件即可，我在Ubuntu18.04上面测试功能。下载好以后有一堆文件夹，有Android、Windows、Linux x64、Linux Arm等，根据本人电脑情况，我保留Linux x64。</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">//进入目录以后在终端打开</span><br><span class="line"><span class="keyword">export</span> ASTRA_SDK_INCLUDE=~/Astra/<span class="keyword">install</span>/<span class="keyword">include</span></span><br><span class="line"><span class="keyword">export</span> ASTRA_SDK_LIB=~/Astra/<span class="keyword">install</span>/lib</span><br><span class="line">source ~/.bashrc</span><br><span class="line">sudo chmod a+x <span class="keyword">install</span>.sh</span><br><span class="line">sudo ./<span class="keyword">install</span>.sh</span><br></pre></td></tr></table></figure>
+
+<p>拔掉相机以后再重新插上相机</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">source</span> <span class="string">OpenNIDevEnvironment</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">Samples/SimpleViewer</span></span><br><span class="line"><span class="attr">make</span>  <span class="string"></span></span><br><span class="line"> <span class="attr">cd</span> <span class="string">Bin</span></span><br><span class="line"><span class="attr">./SimpleViewer</span></span><br></pre></td></tr></table></figure>
+
+<p>然后就出现下面图片</p>
+<p><img src="Pro/image-20200303175736765.png" alt="image-20200303175736765"></p>
+<p>在Bin目录下还有其他可以测试一下</p>
+<p><img src="Pro/image-20200303175800234.png" alt="image-20200303175800234"></p>
+<p>总的来说，性价比还不错，我彻底入坑了。这个世界上其实并没有所谓的最正确的选择，而我们也只有更加努力奋斗才能使当初的选择变得正确。</p>
+]]></content>
+      <categories>
+        <category>SLAM</category>
+      </categories>
+      <tags>
+        <tag>开发使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SLAM初探一：Linux安装OpenCV4</title>
     <url>/2020/02/17/SLAM%E5%88%9D%E6%8E%A2%E4%B8%80%EF%BC%9ALinux%E5%AE%89%E8%A3%85OpenCV4/</url>
     <content><![CDATA[<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>必须要安装的依赖，通过命令安装：</p>
